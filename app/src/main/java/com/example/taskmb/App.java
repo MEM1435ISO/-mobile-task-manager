@@ -22,8 +22,10 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
+        insance = this;
+
         dataBase = Room.databaseBuilder(getApplicationContext(),
-                AddDataBase.class,  "mtmdb")
+                AddDataBase.class,  "mtm-db")
                 .allowMainThreadQueries()
                 .build();
         taskDao  = dataBase.noteDao();
