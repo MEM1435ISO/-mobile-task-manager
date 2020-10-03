@@ -1,5 +1,6 @@
 package data;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Dao
 public interface TaskDao {
-
+    // слой запросов на взаисодействие с базой данных
     @Query("SELECT * FROM Task")
     List<Task> getAll();
 
@@ -21,7 +22,6 @@ public interface TaskDao {
 
     @Query("SELECT * FROM Task WHERE uniqueId = :uniqueId LIMIT 1")
     Task findById(int uniqueId);
-
     Task findById(String first, String last);
 
     @Insert/*(onConflict = OnConflictStrategy.REPLACE)*/
@@ -33,4 +33,5 @@ public interface TaskDao {
     @Insert
     void delete(Task task);
 
+    LiveData<List<Task>> getAllLiveData();
 }
