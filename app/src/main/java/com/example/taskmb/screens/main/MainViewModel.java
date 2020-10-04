@@ -1,12 +1,10 @@
-package screens;
-
-import android.view.View;
+package com.example.taskmb.screens.main;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.taskmb.App;
-import com.example.taskmb.Task;
+import com.example.taskmb.model.App;
+import com.example.taskmb.model.Task;
 
 import java.util.List;
 

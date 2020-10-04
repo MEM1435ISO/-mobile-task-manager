@@ -1,8 +1,8 @@
-package data;
+package com.example.taskmb.data;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
-import  com.example.taskmb.Task;
+import com.example.taskmb.model.Task;
 
 @Database(entities = {Task.class}, version = 1, exportSchema = false)
 

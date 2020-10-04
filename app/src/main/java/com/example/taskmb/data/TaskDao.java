@@ -1,13 +1,12 @@
-package data;
+package com.example.taskmb.data;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
-import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.taskmb.Task;
+import com.example.taskmb.model.Task;
 
 import java.util.List;
 

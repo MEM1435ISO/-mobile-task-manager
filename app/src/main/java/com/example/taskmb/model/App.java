@@ -1,11 +1,11 @@
-package com.example.taskmb;
+package com.example.taskmb.model;
 
 import android.app.Application;
 
 import androidx.room.Room;
 
-import data.AddDataBase;
-import data.TaskDao;
+import com.example.taskmb.data.AddDataBase;
+import com.example.taskmb.data.TaskDao;
 
 public class App extends Application {
 
@@ -14,7 +14,7 @@ public class App extends Application {
 
     private static App insance;
 
-    public static App getInstance(){
+    public static App getInstance() {
         return insance;
     }
 
@@ -25,25 +25,25 @@ public class App extends Application {
         insance = this;
 
         dataBase = Room.databaseBuilder(getApplicationContext(),
-                AddDataBase.class,  "mtm-db")
+                AddDataBase.class, "mtm-db")
                 .allowMainThreadQueries()
                 .build();
-        taskDao  = dataBase.noteDao();
+        taskDao = dataBase.noteDao();
     }
 
-    public AddDataBase getDataBase(){
+    public AddDataBase getDataBase() {
         return dataBase;
     }
 
-    public void setDataBase (AddDataBase dataBase){
+    public void setDataBase(AddDataBase dataBase) {
         this.dataBase = dataBase;
     }
 
-    public TaskDao getTaskDao(){
-       return taskDao;
+    public TaskDao getTaskDao() {
+        return taskDao;
     }
 
-    public void setTaskDao (TaskDao taskDao){
+    public void setTaskDao(TaskDao taskDao) {
         this.taskDao = taskDao;
     }
 }

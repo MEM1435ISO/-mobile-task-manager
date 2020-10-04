@@ -1,4 +1,4 @@
-package com.example.taskmb;
+package com.example.taskmb.model;
 
 
 import android.os.Parcel;
@@ -23,7 +23,7 @@ public class Task implements Parcelable {
     @ColumnInfo(name = "ready")
     public boolean ready;
 
-    public Task(){
+    public Task() {
     }
 
     @Override
@@ -56,7 +56,7 @@ public class Task implements Parcelable {
     }
 
     @Override
-    public void writeToParcel (Parcel dest, int flags){
+    public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(uniqueId);
         dest.writeString(text);
         dest.writeLong(taskTime);
@@ -64,18 +64,18 @@ public class Task implements Parcelable {
     }
 
     @Override
-    public int describeContents(){
+    public int describeContents() {
         return 0;
     }
 
-    public static final Creator<Task> CREATOR = new Creator<Task>(){
+    public static final Creator<Task> CREATOR = new Creator<Task>() {
         @Override
-        public Task createFromParcel(Parcel in){
+        public Task createFromParcel(Parcel in) {
             return new Task(in);
         }
 
         @Override
-        public Task[] newArray(int size){
+        public Task[] newArray(int size) {
             return new Task[size];
         }
 
