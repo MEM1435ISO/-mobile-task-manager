@@ -14,20 +14,20 @@
 
 
     <EditText
-        android:id="@+id/text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="top"
-        android:hint="@string/note_text"
-        android:minHeight="15dp"
-        android:padding="16dp" />
-
-    <EditText
         android:id="@+id/tag"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="top"
         android:hint="@string/tag_text"
+        android:minHeight="15dp"
+        android:padding="16dp" />
+
+    <EditText
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:hint="@string/note_text"
         android:minHeight="15dp"
         android:padding="16dp" />
 

@@ -15,4 +15,5 @@
     <string name="task_details_tille">Задача</string>
     <string name="save">Сохранить</string>
     <string name="completed">Выполнение</string>
+    <string name="complete">Выполненно</string>
 </resources>

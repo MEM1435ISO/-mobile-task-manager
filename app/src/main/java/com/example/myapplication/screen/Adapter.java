@@ -96,7 +96,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.NoteViewHolder> {
 
     static class NoteViewHolder extends RecyclerView.ViewHolder {
 
-        TextView noteText, tagText, timeTextt;
+        TextView noteText, tagText;
         CheckBox completed;
         View delete;
 
@@ -158,8 +158,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.NoteViewHolder> {
         private void updateStrokeOut() {// если выполнена задача вычеркивает
             if (note.done) {
                 noteText.setPaintFlags(noteText.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                completed.setTextColor(Color.GREEN);
+                completed.setText("выполнено");
             } else {
                 noteText.setPaintFlags(noteText.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
+                completed.setTextColor(Color.RED);
+                completed.setText("выполняется");
             }
         }
     }
