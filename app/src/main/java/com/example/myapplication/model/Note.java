@@ -2,11 +2,9 @@ package com.example.myapplication.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
 import java.util.Objects;
 
 @Entity
@@ -29,6 +27,23 @@ public class Note implements Parcelable {
 
     public Note(){
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Note)) return false;
+        Note note = (Note) o;
+        return uid == note.uid &&
+                timestamp == note.timestamp &&
+                done == note.done &&
+                Objects.equals(text, note.text) &&
+                Objects.equals(tag, note.tag) ;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(uid, text, tag, timestamp, done);
     }
 
     protected Note(Parcel in) {
@@ -64,23 +79,4 @@ public class Note implements Parcelable {
             return new Note[size];
         }
     };
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Note)) return false;
-        Note note = (Note) o;
-        return uid == note.uid &&
-                timestamp == note.timestamp &&
-                done == note.done &&
-                Objects.equals(text, note.text) &&
-                Objects.equals(tag, note.tag);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(uid, text, tag, timestamp, done);
-    }
-
-
 }

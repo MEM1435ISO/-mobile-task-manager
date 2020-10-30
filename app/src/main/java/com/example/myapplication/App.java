@@ -1,9 +1,7 @@
 package com.example.myapplication;
 
 import android.app.Application;
-
 import androidx.room.Room;
-
 import com.example.myapplication.data.AppDatabase;
 import com.example.myapplication.data.NoteDao;
 

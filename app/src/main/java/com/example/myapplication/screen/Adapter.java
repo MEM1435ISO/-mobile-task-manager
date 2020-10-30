@@ -1,7 +1,6 @@
 package com.example.myapplication.screen;
 
 import android.app.Activity;
-import android.content.pm.LabeledIntent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.LayoutInflater;
@@ -19,7 +18,12 @@ import com.example.myapplication.App;
 import com.example.myapplication.R;
 import com.example.myapplication.model.Note;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.NoteViewHolder> {
@@ -99,7 +103,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.NoteViewHolder> {
 
     static class  NoteViewHolder extends RecyclerView.ViewHolder{
 
-    TextView noteText,tagText;
+    TextView noteText,tagText, timeTextt;
     CheckBox completed;
     View delete;
 

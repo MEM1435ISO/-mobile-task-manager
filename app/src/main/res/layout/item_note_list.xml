@@ -16,11 +16,12 @@
 
         <TextView
             android:id="@+id/tags"
-            android:layout_width="wrap_content"
+            android:layout_width="287dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            tools:text="Tags"
-            android:text="TextView" />
+            android:text="TextView"
+            tools:text="Tags" />
+
     </LinearLayout>
 
     <LinearLayout

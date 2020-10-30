@@ -74,7 +74,6 @@ public class NoteDetailsActivity extends AppCompatActivity {
                 if (textNote.getText().length() > 0) {
                     note.text = textNote.getText().toString();
                     note.tag = tags.getText().toString();//
-
                     note.done = false;
                     note.timestamp = System.currentTimeMillis();
                     if (getIntent().hasExtra(EXTRA_NOTE)) {
