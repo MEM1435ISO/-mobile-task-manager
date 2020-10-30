@@ -2,6 +2,7 @@ package com.example.myapplication.screen;
 
 import android.app.Activity;
 import android.content.pm.LabeledIntent;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.model.Note;
 
 import java.util.List;
+import java.util.Random;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.NoteViewHolder> {
 
@@ -106,9 +108,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.NoteViewHolder> {
 
     public  NoteViewHolder(@NonNull final View itemView){
         super(itemView);
+        ///
+        Random rnd = new Random();
+        int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+        //itemView.setBackgroundColor(color);
+        //
 
         noteText = itemView.findViewById(R.id.note_text);
         tagText = itemView.findViewById(R.id.tags);
+        tagText.setTextColor(color);
         completed = itemView.findViewById(R.id.completed);
         delete = itemView.findViewById(R.id.delete);
 
