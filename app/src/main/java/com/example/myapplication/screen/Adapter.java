@@ -18,12 +18,7 @@ import com.example.myapplication.App;
 import com.example.myapplication.R;
 import com.example.myapplication.model.Note;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Random;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.NoteViewHolder> {
@@ -35,10 +30,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.NoteViewHolder> {
         sortedList = new SortedList<>(Note.class, new SortedList.Callback<Note>() {
             @Override
             public int compare(Note o1, Note o2) {// сравниватель
-                if(!o2.done && o1.done){
+                if (!o2.done && o1.done) {
                     return 1;
                 }
-                if(o2.done && !o1.done){
+                if (o2.done && !o1.done) {
                     return -1;
                 }
                 return (int) (o2.timestamp - o1.timestamp);
@@ -78,8 +73,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.NoteViewHolder> {
     }
 
 
-
-
     @NonNull
     @Override
     public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -97,76 +90,78 @@ public class Adapter extends RecyclerView.Adapter<Adapter.NoteViewHolder> {
     }
 
 
-    public void setItems(List<Note> notes){
+    public void setItems(List<Note> notes) {
         sortedList.replaceAll(notes);
     }
 
-    static class  NoteViewHolder extends RecyclerView.ViewHolder{
+    static class NoteViewHolder extends RecyclerView.ViewHolder {
 
-    TextView noteText,tagText, timeTextt;
-    CheckBox completed;
-    View delete;
+        TextView noteText, tagText, timeTextt;
+        CheckBox completed;
+        View delete;
 
-    Note note;
-    boolean silentUpdate;
+        Note note;
+        boolean silentUpdate;
 
-    public  NoteViewHolder(@NonNull final View itemView){
-        super(itemView);
-        ///
-        Random rnd = new Random();
-        int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-        //itemView.setBackgroundColor(color);
-        ///
+        public NoteViewHolder(@NonNull final View itemView) {
+            super(itemView);
+            ///
+            Random rnd = new Random();
+            int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+            //itemView.setBackgroundColor(color);
+            ///
 
-        noteText = itemView.findViewById(R.id.note_text);
-        tagText = itemView.findViewById(R.id.tags);
-        tagText.setTextColor(color);
-        completed = itemView.findViewById(R.id.completed);
-        delete = itemView.findViewById(R.id.delete);
+            noteText = itemView.findViewById(R.id.note_text);
+            tagText = itemView.findViewById(R.id.tags);
+            tagText.setTextColor(color);
+            completed = itemView.findViewById(R.id.completed);
+            delete = itemView.findViewById(R.id.delete);
 
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NoteDetailsActivity.start((Activity) itemView.getContext(), note);
-            }
-        });
-
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                App.getInstance().getNoteDao().delete(note);
-            }
-        });
-
-        completed.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-                if(!silentUpdate){
-                    note.done = isChecked;
-                    App.getInstance().getNoteDao().update(note); // Save
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    NoteDetailsActivity.start((Activity) itemView.getContext(), note);
                 }
-                updateStrokeOut();
-            }
-        });
-    }
-    public void bind(Note note){
-        this.note = note;
-        noteText.setText(note.text);
-        tagText.setText(note.tag);
-        updateStrokeOut();
-        silentUpdate = true;
-        completed.setChecked(note.done);
-        silentUpdate = false;
+            });
 
-    }
-    private void updateStrokeOut(){// если выполнена задача вычеркивает
-        if(note.done){
-            noteText.setPaintFlags(noteText.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        }else{
-            noteText.setPaintFlags(noteText.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    App.getInstance().getNoteDao().delete(note);
+                }
+            });
+
+            completed.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                    if (!silentUpdate) {
+                        note.done = isChecked;
+                        App.getInstance().getNoteDao().update(note); // Save
+                    }
+                    updateStrokeOut();
+                }
+            });
+        }
+
+        public void bind(Note note) {
+            this.note = note;
+            noteText.setText(note.text);
+            tagText.setText(note.tag);
+            updateStrokeOut();
+            silentUpdate = true;
+            completed.setChecked(note.done);
+            silentUpdate = false;
+
+        }
+
+        private void updateStrokeOut() {// если выполнена задача вычеркивает
+            if (note.done) {
+                noteText.setPaintFlags(noteText.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            } else {
+                noteText.setPaintFlags(noteText.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
+            }
         }
     }
-}
 
 }

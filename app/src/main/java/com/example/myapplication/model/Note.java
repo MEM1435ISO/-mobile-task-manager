@@ -2,9 +2,11 @@ package com.example.myapplication.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
 import java.util.Objects;
 
 @Entity
@@ -25,7 +27,7 @@ public class Note implements Parcelable {
     @ColumnInfo(name = "done")
     public boolean done;
 
-    public Note(){
+    public Note() {
 
     }
 
@@ -38,7 +40,7 @@ public class Note implements Parcelable {
                 timestamp == note.timestamp &&
                 done == note.done &&
                 Objects.equals(text, note.text) &&
-                Objects.equals(tag, note.tag) ;
+                Objects.equals(tag, note.tag);
     }
 
     @Override

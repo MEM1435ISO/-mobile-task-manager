@@ -23,9 +23,9 @@ public class NoteDetailsActivity extends AppCompatActivity {
 
     private Note note;
 
-    private EditText textNote,tags;
+    private EditText textNote, tags;
 
-    public static void start(Activity caller, Note note){
+    public static void start(Activity caller, Note note) {
         Intent intent = new Intent(caller, NoteDetailsActivity.class);
         if (note != null) {
             intent.putExtra(EXTRA_NOTE, note);
@@ -53,11 +53,11 @@ public class NoteDetailsActivity extends AppCompatActivity {
             note = getIntent().getParcelableExtra(EXTRA_NOTE);
             tags.setText(note.tag);
             textNote.setText(note.text);
-        }
-        else{
+        } else {
             note = new Note();
         }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_details, menu);
