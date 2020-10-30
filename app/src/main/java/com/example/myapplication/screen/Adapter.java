@@ -112,7 +112,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.NoteViewHolder> {
         Random rnd = new Random();
         int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
         //itemView.setBackgroundColor(color);
-        //
+        ///
 
         noteText = itemView.findViewById(R.id.note_text);
         tagText = itemView.findViewById(R.id.tags);
