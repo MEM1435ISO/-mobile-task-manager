@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="110dp"
@@ -33,12 +34,13 @@
 
         <TextView
             android:id="@+id/note_text"
-            android:layout_width="0dp"
+            android:layout_width="154dp"
             android:layout_height="30dp"
             android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:minHeight="64dp"
+            android:textSize="18sp"
             tools:text="some text for testing" />
 
         <CheckBox
@@ -47,16 +49,17 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
             android:layout_marginTop="16dp"
-            android:text="@string/completed" />
+            android:text="@string/completed"
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/delete"
-            android:layout_width="43dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="15dp"
-            android:src="@android:drawable/ic_notification_clear_all"
-            />
+            android:layout_width="29dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="16dp"
+            android:icon="@drawable/del"
+            app:srcCompat="@drawable/del" />
 
     </LinearLayout>
 

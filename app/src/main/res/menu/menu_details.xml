@@ -6,5 +6,7 @@
         android:id="@+id/action_save"
         android:icon="@drawable/save"
         android:title="@string/save"
+        android:visible="true"
+        app:maxImageSize="30dp"
         app:showAsAction="always" />
 </menu>
