@@ -27,6 +27,7 @@ public class App extends Application {
         database = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "db")
                 .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
                 .build();
         noteDao = database.noteDao();
     }

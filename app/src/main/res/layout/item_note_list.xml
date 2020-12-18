@@ -21,9 +21,21 @@
             android:layout_height="30dp"
             android:layout_weight="1"
             android:text="@string/tag_text"
-            android:textSize="24sp"
+            android:textSize="24dp"
             android:textStyle="bold"
-            tools:text="Tags" />
+            tools:text="Tags"/>
+
+        <TextView
+            android:id="@+id/time"
+            android:gravity="right"
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:layout_weight="1"
+            android:text="@string/datetime"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            tools:text="Time"
+            />
 
     </LinearLayout>
 
@@ -40,7 +52,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:minHeight="64dp"
-            android:textSize="18sp"
+            android:textSize="16dp"
             tools:text="some text for testing" />
 
         <CheckBox
@@ -50,7 +62,7 @@
             android:layout_marginStart="18dp"
             android:layout_marginTop="16dp"
             android:text="@string/completed"
-            android:textSize="16sp" />
+            android:textSize="18dp" />
 
         <ImageView
             android:id="@+id/delete"

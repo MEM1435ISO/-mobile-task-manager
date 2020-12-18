@@ -27,10 +27,14 @@ public class Note implements Parcelable {
     @ColumnInfo(name = "done")
     public boolean done;
 
+    @ColumnInfo(name = "datetime")
+    public String datetime;
+
     public Note() {
 
     }
 
+    // datetime
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -40,18 +44,20 @@ public class Note implements Parcelable {
                 timestamp == note.timestamp &&
                 done == note.done &&
                 Objects.equals(text, note.text) &&
-                Objects.equals(tag, note.tag);
+                Objects.equals(tag, note.tag) &&
+                Objects.equals(datetime, note.datetime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uid, text, tag, timestamp, done);
+        return Objects.hash(uid, text, tag, datetime, timestamp, done);
     }
 
     protected Note(Parcel in) {
         uid = in.readInt();
         text = in.readString();
         tag = in.readString();
+        datetime = in.readString();
         timestamp = in.readLong();
         done = in.readByte() != 0;
     }
@@ -61,6 +67,7 @@ public class Note implements Parcelable {
         dest.writeInt(uid);
         dest.writeString(text);
         dest.writeString(tag);
+        dest.writeString(datetime);
         dest.writeLong(timestamp);
         dest.writeByte((byte) (done ? 1 : 0));
     }

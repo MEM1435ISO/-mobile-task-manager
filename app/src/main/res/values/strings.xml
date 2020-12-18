@@ -17,4 +17,5 @@
     <string name="save">Сохранить</string>
     <string name="completed">Выполнение</string>
     <string name="complete">Выполненно</string>
+    <string name="datetime">Время</string>
 </resources>

@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase;
 
 import com.example.myapplication.model.Note;
 
-@Database(entities = {Note.class}, version = 1, exportSchema = false)
+@Database(entities = {Note.class}, version = 2, exportSchema = false) // 2 version IO
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract NoteDao noteDao();

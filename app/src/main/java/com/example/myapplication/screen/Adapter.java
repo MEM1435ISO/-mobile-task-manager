@@ -18,6 +18,9 @@ import com.example.myapplication.App;
 import com.example.myapplication.R;
 import com.example.myapplication.model.Note;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -89,19 +92,22 @@ public class Adapter extends RecyclerView.Adapter<Adapter.NoteViewHolder> {
         return sortedList.size();
     }
 
-
     public void setItems(List<Note> notes) {
         sortedList.replaceAll(notes);
     }
 
     static class NoteViewHolder extends RecyclerView.ViewHolder {
 
-        TextView noteText, tagText;
+        TextView noteText, tagText, datetime;
         CheckBox completed;
         View delete;
 
         Note note;
         boolean silentUpdate;
+
+        DateFormat dateFormat = new SimpleDateFormat("dd MMM H:mm");//
+        Date date = new Date();//
+        String str = dateFormat.format(date);//
 
         public NoteViewHolder(@NonNull final View itemView) {
             super(itemView);
@@ -116,6 +122,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.NoteViewHolder> {
             tagText.setTextColor(color);
             completed = itemView.findViewById(R.id.completed);
             delete = itemView.findViewById(R.id.delete);
+
+            datetime = itemView.findViewById(R.id.time);//ew
+            datetime.setText(str);//ewq
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -165,9 +174,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.NoteViewHolder> {
                 completed.setTextColor(Color.parseColor("#b50000"));
                 completed.setText("выполнить");
             }
+            datetime.setText(str);
         }
-
-
     }
-
 }

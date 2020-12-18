@@ -28,6 +28,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -72,10 +73,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-                Intent intent;
-                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://makkuk10.beget.tech"));
-                startActivity(intent);
+        Intent intent;
+        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://makkuk10.beget.tech"));
+        startActivity(intent);
 
-        };
+    }
+
+    ;
 }
 
