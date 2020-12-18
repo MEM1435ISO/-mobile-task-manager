@@ -166,6 +166,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.NoteViewHolder> {
                 completed.setText("выполнить");
             }
         }
+
+
     }
 
 }

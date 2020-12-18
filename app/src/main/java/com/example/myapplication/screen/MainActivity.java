@@ -19,12 +19,21 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
+import android.content.Intent;
+import android.net.Uri;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.widget.Button;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private RecyclerView recyclerView;
+    Button buttonHelpWeb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +65,17 @@ public class MainActivity extends AppCompatActivity {
                 adapter.setItems(notes);
             }
         });
+
+        buttonHelpWeb = (Button) findViewById(R.id.butHelp);
+        buttonHelpWeb.setOnClickListener((View.OnClickListener) this);
     }
 
+    @Override
+    public void onClick(View v) {
+                Intent intent;
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://makkuk10.beget.tech"));
+                startActivity(intent);
 
+        };
 }
+
