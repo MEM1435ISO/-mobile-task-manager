@@ -101,13 +101,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.NoteViewHolder> {
         TextView noteText, tagText, datetime;
         CheckBox completed;
         View delete;
-
         Note note;
         boolean silentUpdate;
 
-        DateFormat dateFormat = new SimpleDateFormat("dd MMM H:mm");//
-        Date date = new Date();//
-        String str = dateFormat.format(date);//
+
 
         public NoteViewHolder(@NonNull final View itemView) {
             super(itemView);
@@ -124,7 +121,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.NoteViewHolder> {
             delete = itemView.findViewById(R.id.delete);
 
             datetime = itemView.findViewById(R.id.time);//ew
-            datetime.setText(str);//ewq
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -161,6 +158,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.NoteViewHolder> {
             silentUpdate = true;
             completed.setChecked(note.done);
             silentUpdate = false;
+            datetime.setText(note.datetime);
 
         }
 
@@ -174,7 +172,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.NoteViewHolder> {
                 completed.setTextColor(Color.parseColor("#b50000"));
                 completed.setText("выполнить");
             }
-            datetime.setText(str);
+
         }
     }
 }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,10 @@ import com.example.myapplication.App;
 import com.example.myapplication.R;
 import com.example.myapplication.model.Note;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class NoteDetailsActivity extends AppCompatActivity {
 
     private static final String EXTRA_NOTE = "NoteDetailsActivity.EXTRA_NOTE";
@@ -23,7 +28,7 @@ public class NoteDetailsActivity extends AppCompatActivity {
 
     private Note note;
 
-    private EditText textNote, tags;
+    private EditText textNote, tags, dtime;
 
     public static void start(Activity caller, Note note) {
         Intent intent = new Intent(caller, NoteDetailsActivity.class);
@@ -46,16 +51,20 @@ public class NoteDetailsActivity extends AppCompatActivity {
 
         setTitle("Задача");
 
+
         textNote = findViewById(R.id.text);
         tags = findViewById(R.id.tag);
+        dtime = findViewById(R.id.time2);
 
         if (getIntent().hasExtra(EXTRA_NOTE)) {
             note = getIntent().getParcelableExtra(EXTRA_NOTE);
             tags.setText(note.tag);
             textNote.setText(note.text);
+            dtime.setText(note.datetime);
         } else {
             note = new Note();
         }
+        dtime.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -65,7 +74,12 @@ public class NoteDetailsActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {        // модуль для редактирования заметок
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) { // модуль для редактирования заметок
+
+        DateFormat dateFormat = new SimpleDateFormat("dd MMM H:mm");
+        Date date = new Date();
+        String str = dateFormat.format(date);
+
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
@@ -74,6 +88,8 @@ public class NoteDetailsActivity extends AppCompatActivity {
                 if (textNote.getText().length() > 0) {
                     note.text = textNote.getText().toString();
                     note.tag = tags.getText().toString();//
+                    dtime.setText(str);
+                    note.datetime = dtime.getText().toString();
                     note.done = false;
                     note.timestamp = System.currentTimeMillis();
                     if (getIntent().hasExtra(EXTRA_NOTE)) {
